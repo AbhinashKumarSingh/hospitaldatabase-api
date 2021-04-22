@@ -5,21 +5,7 @@ const bodyparse =require("body-parser");
 const cors=require("cors");
  const app=express();
 const port=process.env.PORT || 3005;
-const db=mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: "root",
-    password: "",
-    database: "hospitaldatabase"
-});
-
-db.connect((error)=>{
-    if(error){
-        console.log(error);
-    }
-    else{
-        console.log("mysql connected ....");
-    }
-  });
+var db=require('./db');
   app.use(bodyparse.json());
 app.use(cors());
 app.use(bodyparse.urlencoded({
