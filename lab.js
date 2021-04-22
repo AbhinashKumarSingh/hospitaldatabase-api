@@ -1,20 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const mysql=require("mysql");
-const db=mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: "root",
-    password: "",
-    database: "hospitaldatabase"
-});
-db.connect((error)=>{
-    if(error){
-        console.log(error);
-    }
-    else{
-        console.log("mysql connected ....");
-    }
-  });
+var db=require('./db');
 router.get("/",(req,res)=>{
     return res.send({error:true,message:'hello'})
 });
