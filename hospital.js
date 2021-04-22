@@ -1,23 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const mysql=require("mysql");
-const db=mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: "root",
-    password: "",
-    database: "hospitaldatabase"
-});
-db.connect((error)=>{
-    if(error){
-        console.log(error);
-    }
-    else{
-        console.log("mysql connected ....");
-    }
-  });
-router.get("/",(req,res)=>{
-    return res.send({error:true,message:'hello'})
-});
+var db=require('./db');
 
 router.get("/hospitalinfo",(req,res)=>{
     db.query('SELECT * FROM hospital_data',(error,results,fields)=>{
